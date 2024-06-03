@@ -1,14 +1,29 @@
 var messages = ["CONGRADUATIONS ON CONGRADUATING", "🎉", "you're a master now", "🎓", "climb up that academic ladder", "watch out world 👀", "sarah kondo? more like sarah intheknow", "such congrats", "🎊", "much grad", "very accomplish", "🔥", "much smart", "wow", "so brains", "🧠", "very impress", "i'll let you be my master in bed"]
+var song;
 
 var count = 0;
 var time = 64;
 var i = 0;
+
+function preload() {
+  song = loadSound("song.mp3");
+}
 
 function setup() {
   textFont('Comic Sans MS');
   createCanvas(
     window.innerWidth,
     window.innerHeight);
+
+    let playButton = createButton('🎺');
+    playButton.position(width / 2 - 30, height / 2);
+    playButton.mousePressed(startPlaying);
+}
+
+function startPlaying() {
+  if (song && song.isLoaded()) {
+    song.play();
+  }
 }
 
 function draw() {
@@ -17,10 +32,6 @@ function draw() {
   if (count == time) {
     drawText()
     count = 0;
-  }
-  
-  if (mouseIsPressed) {
-      clear()
   }
 }
 
